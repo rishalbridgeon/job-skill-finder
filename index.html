@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoleRadar - Global Job Finder and ATS Resume Builder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="intro-panel" aria-labelledby="app-title">
+        <div>
+          <p class="eyebrow">Global job discovery</p>
+          <h1 id="app-title">RoleRadar</h1>
+          <p class="intro-copy">
+            Search for a target role, compare similar opportunities worldwide, and generate an ATS-friendly resume draft tuned to the role.
+          </p>
+        </div>
+        <div class="status-strip" aria-label="Workflow">
+          <span>Role match</span>
+          <span>Global sources</span>
+          <span>ATS resume</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Job finder workspace">
+        <form class="control-panel" id="role-form">
+          <div class="field-group">
+            <label for="role-input">Job role</label>
+            <input id="role-input" name="role" type="text" placeholder="Example: data analyst, frontend developer" required />
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="location-input">Preferred location</label>
+              <input id="location-input" name="location" type="text" placeholder="Global, Remote, Canada, Singapore..." />
+            </div>
+            <div class="field-group">
+              <label for="seniority-select">Experience level</label>
+              <select id="seniority-select" name="seniority">
+                <option value="Entry level">Entry level</option>
+                <option value="Associate">Associate</option>
+                <option value="Mid level" selected>Mid level</option>
+                <option value="Senior">Senior</option>
+                <option value="Lead">Lead</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="skills-input">Your skills</label>
+            <textarea id="skills-input" name="skills" rows="4" placeholder="Add skills separated by commas, for example: SQL, Excel, Python, dashboards, stakeholder communication"></textarea>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="experience-input">Experience summary</label>
+              <input id="experience-input" name="experience" type="text" placeholder="Example: 2 years building reports and dashboards" />
+            </div>
+            <div class="field-group">
+              <label for="name-input">Name for resume</label>
+              <input id="name-input" name="name" type="text" placeholder="Your name" />
+            </div>
+          </div>
+
+          <button class="primary-action" type="submit">Find opportunities</button>
+        </form>
+
+        <section class="results-panel" aria-live="polite">
+          <div class="toolbar">
+            <button class="tab-button active" type="button" data-tab="jobs">Opportunities</button>
+            <button class="tab-button" type="button" data-tab="roles">Similar roles</button>
+            <button class="tab-button" type="button" data-tab="resume">ATS resume</button>
+          </div>
+
+          <div class="tab-view active" id="jobs-view">
+            <div class="section-heading">
+              <h2>Opportunity searches</h2>
+              <p id="job-summary">Enter a role to build targeted global searches.</p>
+            </div>
+            <div class="job-grid" id="job-results"></div>
+          </div>
+
+          <div class="tab-view" id="roles-view">
+            <div class="section-heading">
+              <h2>Similar roles</h2>
+              <p>Use these titles to widen your search without drifting away from your skill set.</p>
+            </div>
+            <div class="role-list" id="similar-roles"></div>
+          </div>
+
+          <div class="tab-view" id="resume-view">
+            <div class="section-heading resume-heading">
+              <div>
+                <h2>ATS-friendly resume draft</h2>
+                <p>Plain structure, keyword-rich bullets, and clean headings for applicant tracking systems.</p>
+              </div>
+              <button class="secondary-action" type="button" id="copy-resume">Copy resume</button>
+            </div>
+            <pre class="resume-output" id="resume-output">Your resume draft will appear here.</pre>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
